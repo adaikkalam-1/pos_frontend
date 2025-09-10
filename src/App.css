@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&amp;display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif !important;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.adminLayout_main {
+  width: 100%;
+  height: 100vh;
+}
+.adminLayout_sider {
+  background-color: #fff;
+  height: calc(100vh - 63px);
+  overflow: scroll;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+.adminLayout_header {
+  display: flex;
+  align-items: center;
+  background: #ffff;
+  height: 63px;
+  padding: 0 20px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  z-index: 20;
+  width: 100%;
+  justify-content: space-between;
+}
+.ant-layout .ant-layout-sider {
+  background: #fff !important;
+}
+
+.adminLayout_content {
+  /* background-color: #f1f1f1; */
+  height: calc(100vh - 63px);
+  padding: 0px;
+  overflow: scroll;
+}
+.adminLayout_menu {
+  font-size: 0.85rem;
+  padding: 10px;
+}
+.adminLayout_menu .ant-menu-title-content {
+  margin-left: 10px;
+  padding: 0px;
+}
+.adminLayout_menu .ant-menu-title-content:hover {
+  margin-left: 10px;
+  padding: 0px;
+}
+.adminLayout_menu .ant-menu-item:hover .anticon,
+.adminLayout_menu .ant-menu-item-active .anticon,
+.adminLayout_menu .ant-menu-item-selected .anticon {
+  color: #90c966;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 0;
+}
+
+.logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+.pos-container {
+  padding: 24px;
+  background: #ffff;
+  min-height: 100vh;
+}
+
+.section-title {
+  margin-bottom: 16px;
+}
+.product-card {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 7px;
+}
+
+.product-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.product-info {
+  margin-bottom: 12px;
+}
+.loading_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.product-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.sku {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 600;
+  color: #722ed1;
+  margin: 0;
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stock {
+  font-size: 14px;
+  color: #666;
+}
+
+.add-btn {
+  background: #52c41a !important; /* green */
+  border: none !important;
+  font-weight: 500;
+  padding: 0 20px;
+  height: 32px;
+}
+
+.checkout-btn {
+  background: #90c966;
+  border: none;
+  border-radius: 8px !important;
+}
+.checkout-btn:hover {
+  background: #90c966 !important;
+  border: none;
+  border-radius: 8px !important;
+  color: #fff !important;
+}
+.qty-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qty-value {
+  min-width: 24px;
+  text-align: center;
+  font-weight: bold;
+}
+.add-button-head {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 10px;
+}
+.save_button {
+  display: flex;
+  justify-content: end;
+}
