@@ -3,7 +3,7 @@ import { Form, Input, Button, Layout, message, App } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { LoginUser } from "../../services/Index";
 import { useState } from "react";
-import logo from "../../assets/pos_logo.png";
+// import logo from "../../assets/pos_logo.png";
 import Title from "antd/es/typography/Title";
 import { useDispatch, useSelector } from "react-redux";
 import { setAccessToken } from "../../store/themeSlice";
@@ -44,6 +44,7 @@ const Login = () => {
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
+          background:"#d8d3d3ff"
         }}
       >
         <div className="login-card">

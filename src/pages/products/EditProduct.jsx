@@ -112,7 +112,7 @@ const EditProduct = ({ data, fetchProduct }) => {
                 rules={[
                   {
                     required: true,
-                    message: "Please Enter Prouct price ",
+                    message: "Please Enter Product price ",
                   },
                   {
                     pattern: /^[0-9]+$/,

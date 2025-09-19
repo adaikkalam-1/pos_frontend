@@ -1,4 +1,4 @@
-import { App, Card, Col, Row, Spin, Typography } from "antd";
+import { App, Card, Col, Row, Spin, Typography ,Empty} from "antd";
 import { useEffect, useState } from "react";
 import { GetProduct } from "../../services/Index";
 const { Text, Title } = Typography;
@@ -37,7 +37,7 @@ const Dashboard = () => {
         <div className="loading_container">
           <Spin size="large" tip="Loading..." />
         </div>
-      ) : (
+      ) : data?.length > 0 ? (
         <Row gutter={[16, 16]}>
           {data?.map((item) => (
             <Col key={item.id} xs={24} sm={12} md={12} lg={6} xl={6}>
@@ -51,6 +51,8 @@ const Dashboard = () => {
             </Col>
           ))}
         </Row>
+      ) : (
+        <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
       )}
     </>
   );

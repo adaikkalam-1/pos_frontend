@@ -76,7 +76,7 @@ const Sale = () => {
       const newData = res.data;
       message.success(res.message);
       dispatch(clearCart());
-      GenerateInvoice(newData);
+      await GenerateInvoice(newData);
       fetchProduct();
     } catch (error) {
       console.log(error);
