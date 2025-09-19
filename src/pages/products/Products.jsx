@@ -6,6 +6,7 @@ import {
   Space,
   Switch,
   Table,
+  App,
 } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { DeleteOutlined } from "@ant-design/icons";
@@ -17,6 +18,7 @@ import { DeleteProduct, GetProduct } from "../../services/Index";
 const Products = () => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
+   const { message } = App.useApp();
 
   console.log("data", data);
 
@@ -50,7 +52,7 @@ const Products = () => {
       setLoading(false);
     } catch (error) {
       console.log(error);
-      message.error(error?.response?.data?.message);
+      message.error(error?.response?.data?.error);
       setLoading(false);
     }
   };

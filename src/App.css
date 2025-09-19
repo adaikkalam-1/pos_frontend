@@ -128,7 +128,7 @@
 }
 
 .add-btn {
-  background: #52c41a !important; /* green */
+  background: #52c41a !important; 
   border: none !important;
   font-weight: 500;
   padding: 0 20px;
@@ -164,5 +164,24 @@
 }
 .save_button {
   display: flex;
-  justify-content: end;
+  justify-content: end;  
+}
+
+.login-card {
+  width: 350px;
+  border-radius: 10px;
+  padding: 0px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(1.2px);
+  -webkit-backdrop-filter: blur(1.5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 1%;
+  z-index: 200;
+}
+
+.login-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5%;
 }

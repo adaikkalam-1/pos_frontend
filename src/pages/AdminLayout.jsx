@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 const { Header, Content, Sider } = Layout;
 
 const AdminLayout = () => {
-  const { navigate, dispatch } = Common();
+  const { navigate, dispatch ,LogoutModal} =  Common();
   const location = useLocation();
   const collapsed = useSelector((state) => state.theme.layoutCollapsed);
   const [selectedMenu, setSelectedMenu] = useState(location.pathname);
@@ -20,7 +20,8 @@ const AdminLayout = () => {
 
   const handleMenuClick = (e) => {
     if (e.key === "/logout") {
-      LogoutModal();
+      console.log("modal click")
+      LogoutModal()
     } else {
       setSelectedMenu(e.key);
       navigate(e.key);

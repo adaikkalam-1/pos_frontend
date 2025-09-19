@@ -10,15 +10,22 @@ import {
   Space,
   Flex,
   Spin,
+  App,
+  Select,
+  Input,
 } from "antd";
 import { addToCart, clearCart, updateQty } from "../../store/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { CheckoutProduct, GetProduct } from "../../services/Index";
 
 const { Title, Text } = Typography;
+import jsPDF from "jspdf";
+import { GenerateInvoice } from "../../components/GenerateInvoice";
 
 const Sale = () => {
   const dispatch = useDispatch();
+  const { message } = App.useApp();
+  const [filterName, setFilterName] = useState("");
   const cart = useSelector((state) => state.cart.cart);
 
   const total = cart?.reduce((sum, item) => sum + item.price * item.qty, 0);
@@ -29,13 +36,15 @@ const Sale = () => {
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   useEffect(() => {
     fetchProduct();
-  }, []);
-
+  }, [filterName]);
+  const handleChangeValue = (value) => {
+    setFilterName(value);
+  };
+  console.log("filterNAme", filterName);
   const fetchProduct = async () => {
     try {
       setLoading(true);
-
-      const res = await GetProduct();
+      const res = await GetProduct(filterName);
       console.log("res", res);
 
       const newData = res.data;
@@ -43,7 +52,8 @@ const Sale = () => {
 
       setLoading(false);
     } catch (error) {
-      message.error(error.response?.data?.message || "Something went wrong");
+      console.log("ee", error.response?.data?.error);
+      message.error(error.response?.data?.error || "Something went wrong");
       setLoading(false);
     }
   };
@@ -57,22 +67,39 @@ const Sale = () => {
           product_id: item.id,
           quantity: item.qty,
           price: item.price,
+          name: item.name,
         })),
       };
       console.log("payload", payload);
       const res = await CheckoutProduct(payload);
       console.log("res", res);
+      const newData = res.data;
+      message.success(res.message);
       dispatch(clearCart());
+      GenerateInvoice(newData);
       fetchProduct();
-      setCheckoutLoading(false);
     } catch (error) {
       console.log(error);
+
+      console.log("ee", error.response?.data?.error);
+      message.error(error.response?.data?.error);
+    } finally {
       setCheckoutLoading(false);
     }
   };
 
   return (
     <div className="pos-container">
+      <Space size="large" align="center">
+        <Title level={5}>Search Product</Title>
+        <Input
+          name="name"
+          value={filterName}
+          style={{ width: 250 }}
+          placeholder="Search  product "
+          onChange={(e) => handleChangeValue(e.target.value)}
+        />
+      </Space>
       {loading ? (
         <div className="loading_container">
           <Spin size="large" tip="Loading..." />

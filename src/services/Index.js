@@ -1,12 +1,15 @@
 import requests from "./httpServices";
+
+
 export const LoginUser = async (data) => {
-  return await requests.post(`users/login`, data);
+  return await requests.post(`auth/login`, data);
 };
 
 // =================product  Start ===========
-export const GetProduct = async () => {
-  return await requests.get(`products`);   ;
-}; 
+export const GetProduct = async (data) => {
+  return await requests.get(`products?search=${data || ""}`);
+};
+
 
 export const CreateProduct = async (data) => {
   return await requests.post(`products`, data);
@@ -23,5 +26,5 @@ export const CheckoutProduct = async (data) => {
 };
 
 export const GetSales = async () => {
-  return await requests.get(`sales`);   ;
+  return await requests.get(`sales`);
 }; 

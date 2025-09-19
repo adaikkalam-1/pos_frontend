@@ -1,4 +1,5 @@
 import {
+  DashboardOutlined,
   LogoutOutlined,
   PieChartOutlined,
   ProjectOutlined,
@@ -9,8 +10,13 @@ import React from "react";
 
 export const menuItems = [
   {
-    label: "Sale",
+    label: "Dashboard",
     key: "/",
+    icon: React.createElement(DashboardOutlined),
+  },
+  {
+    label: "Sale",
+    key: "/sale",
     icon: React.createElement(ProjectOutlined),
   },
   {
@@ -22,5 +28,10 @@ export const menuItems = [
     label: "Reports",
     key: "/reports",
     icon: React.createElement(RiseOutlined),
+  },
+  {
+    label: "Logout",
+    key: "/logout",
+    icon: React.createElement(LogoutOutlined),
   },
 ];

@@ -1,35 +1,40 @@
 import React from "react";
 import AdminLayout from "./pages/AdminLayout";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Sale from "./pages/sale/Sale";
 import Products from "./pages/products/Products";
 import Reports from "./pages/reports/Reports";
-import { ConfigProvider } from "antd";
+
+import Dashboard from "./pages/dashboard/Dashboard";
+import Login from "./pages/auth/Login";
+import { useSelector } from "react-redux";
 
 const App = () => {
+  const token = useSelector((state) => state.theme.accessToken);
+  const ProtectedRoute = ({ children }) => {
+    if (!token) {
+      return <Navigate to="/login" replace />;
+    }
+    return children;
+  };
   return (
-    <div>
-      <ConfigProvider
-        theme={{
-          components: {
-            Button: {
-              colorPrimary: "#a2c423",
-              colorPrimaryHover: "#a2c423",
-              colorPrimaryActive: "#a2c423",
-              borderRadius: 6,
-            },
-          },
-        }}
-      >
-        <Routes>
-          <Route element={<AdminLayout />}>
-            <Route path="/" element={<Sale />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/reports" element={<Reports />} />
-          </Route>
-        </Routes>
-      </ConfigProvider>
-    </div>
+    <>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route
+          element={
+            <ProtectedRoute>
+              <AdminLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/sale" element={<Sale />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/reports" element={<Reports />} />
+        </Route>
+      </Routes>
+    </>
   );
 };
 
